@@ -65,7 +65,7 @@ fun OnBoardingScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Welcome to the Basics Codelab!")
+        Text("Welcome to the compose basics!")
         Button(
             modifier = Modifier.padding(vertical = 24.dp),
             onClick = onContinueClicked
