@@ -96,17 +96,22 @@ private fun Greeting(name: String) {
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .padding(bottom = extraPadding)
+                    .padding(bottom = extraPadding.coerceAtLeast(0.dp))
             ) {
                 Text(text = "Hello, ")
                 Text(text = name)
+                if (expanded) {
+                    Text(text = ("Welcome to the compose basics!").repeat(4))
+                }
             }
             ElevatedButton(
-                onClick = { expanded.value = !expanded.value }
+                onClick = { expanded = !expanded }
             ) {
-                Text(if (expanded.value) "Show less" else "Show more")
+                Text(if (expanded) "Show less" else "Show more")
                 Icon(
-                    if (expanded.value) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
+                    imageVector = if (expanded)
+                        Icons.Filled.KeyboardArrowUp else
+                        Icons.Filled.KeyboardArrowDown,
                     contentDescription = null
                 )
             }
