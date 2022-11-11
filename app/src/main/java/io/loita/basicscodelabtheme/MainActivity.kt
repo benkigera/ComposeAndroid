@@ -72,10 +72,15 @@ fun OnBoardingScreen(
 @Composable
 private fun Greeting(name: String) {
 
-    val expanded = remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(false) }
 
-    val extraPadding = if (expanded.value) 48.dp else 0.dp
-
+    val extraPadding by animateDpAsState(
+        if (expanded) 48.dp else 0.dp,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        )
+    )
     Surface(
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
